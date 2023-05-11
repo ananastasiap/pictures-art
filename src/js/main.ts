@@ -1,1 +1,5 @@
-console.log('Hello World from main.ts!');
+import { modals } from './modules/index.ts';
+
+window.addEventListener('DOMContentLoaded', () => {
+  modals();
+});
