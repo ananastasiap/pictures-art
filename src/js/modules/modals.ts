@@ -1,4 +1,6 @@
 export const modals = () => {
+  let btnPressed: boolean = false;
+
   const bindModal = ({
     triggerSelector,
     modalSelector,
@@ -24,6 +26,8 @@ export const modals = () => {
         if (event.target) {
           event.preventDefault();
         }
+
+        btnPressed = true;
 
         if (destroyTrigger) {
           trigger.remove();
