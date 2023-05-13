@@ -3,12 +3,12 @@ export const modals = () => {
     triggerSelector,
     modalSelector,
     closeSelector,
-    closeClickOverlay = true,
+    destroyTrigger = false,
   }: {
     triggerSelector: string;
     modalSelector: string;
     closeSelector: string;
-    closeClickOverlay?: boolean;
+    destroyTrigger?: boolean;
   }) => {
     const triggers = document.querySelectorAll(triggerSelector);
     const windows = document.querySelectorAll<HTMLElement>('[data-modal]');
@@ -23,6 +23,10 @@ export const modals = () => {
       trigger.addEventListener('click', (event) => {
         if (event.target) {
           event.preventDefault();
+        }
+
+        if (destroyTrigger) {
+          trigger.remove();
         }
 
         closeAllModals();
@@ -40,7 +44,7 @@ export const modals = () => {
     });
 
     modal.addEventListener('click', (event) => {
-      if (event.target === modal && closeClickOverlay) {
+      if (event.target === modal) {
         closeAllModals();
         closeModal();
       }
@@ -56,7 +60,7 @@ export const modals = () => {
     const closeModal = () => {
       modal.style.display = 'none';
       document.body.style.overflow = '';
-      document.body.style.marginRight = `0p`;
+      document.body.style.marginRight = `0`;
     };
 
     const closeAllModals = () => {
@@ -80,6 +84,8 @@ export const modals = () => {
         const modalByTime = document.querySelector(selector) as HTMLElement;
         modalByTime.style.display = 'block';
         document.body.style.overflow = 'hidden';
+        const scroll = calcScroll();
+        document.body.style.marginRight = `${scroll}px`;
       }
     }, time);
   };
@@ -109,6 +115,12 @@ export const modals = () => {
     triggerSelector: '.button-consultation',
     modalSelector: '.popup-consultation',
     closeSelector: '.popup-consultation .popup-close'
+  });
+  bindModal({
+    triggerSelector: '.fixed-gift',
+    modalSelector: '.popup-gift',
+    closeSelector: '.popup-gift .popup-close',
+    destroyTrigger: true
   });
   showModalByTime('.popup-consultation', 60000);
 };
