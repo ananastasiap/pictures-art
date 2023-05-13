@@ -11,10 +11,13 @@ export const modals = () => {
     closeClickOverlay?: boolean;
   }) => {
     const triggers = document.querySelectorAll(triggerSelector);
-    const modal = document.querySelector(modalSelector) as HTMLElement;
-    const close = document.querySelector(closeSelector) as HTMLElement;
     const windows = document.querySelectorAll<HTMLElement>('[data-modal]');
     const scroll = calcScroll();
+    const modal: HTMLElement | null = document.querySelector(modalSelector)
+    const close: HTMLElement | null = document.querySelector(closeSelector)
+    if (!modal || !close) {
+      return
+    }
 
     triggers.forEach(trigger => {
       trigger.addEventListener('click', (event) => {
@@ -44,7 +47,7 @@ export const modals = () => {
     });
 
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
+      if (event.key.toLowerCase() === 'escape') {
         closeAllModals();
         closeModal();
       }
@@ -53,7 +56,7 @@ export const modals = () => {
     const closeModal = () => {
       modal.style.display = 'none';
       document.body.style.overflow = '';
-      document.body.style.marginRight = `0px`;
+      document.body.style.marginRight = `0p`;
     };
 
     const closeAllModals = () => {
