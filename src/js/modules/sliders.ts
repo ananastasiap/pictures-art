@@ -9,7 +9,9 @@ export const sliders = ({
   prevBtn: string,
   nextBtn: string
 }) => {
+
   let slideIndex: number = 1;
+  let paused: number = 0;
   const slidesItems = document.querySelectorAll<HTMLElement>(slides);
 
   const showSlides = (number: number) => {
@@ -54,4 +56,28 @@ export const sliders = ({
       slidesItems[slideIndex - 1].classList.add('slideInLeft');
     });
   } catch(event) {}
+
+  const activateAnimation = () => {
+    if (slidesDirection === 'vertical') {
+      paused = setInterval(function() {
+        changeSlides(1);
+        slidesItems[slideIndex - 1].classList.add('slideInDown');
+      }, 3000);
+    } else {
+      paused = setInterval(function() {
+        changeSlides(1);
+        slidesItems[slideIndex - 1].classList.remove('slideInRight');
+        slidesItems[slideIndex - 1].classList.add('slideInLeft');
+      }, 3000);
+    }
+  };
+
+  activateAnimation();
+
+  slidesItems[0].parentNode?.addEventListener('mouseenter', () => {
+    clearInterval(paused);
+  });
+  slidesItems[0].parentNode?.addEventListener('mouseleave', () => {
+    activateAnimation();
+  });
 };
