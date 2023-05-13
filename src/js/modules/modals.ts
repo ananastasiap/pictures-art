@@ -15,8 +15,8 @@ export const modals = () => {
     const triggers = document.querySelectorAll(triggerSelector);
     const windows = document.querySelectorAll<HTMLElement>('[data-modal]');
     const scroll = calcScroll();
-    const modal: HTMLElement | null = document.querySelector(modalSelector)
-    const close: HTMLElement | null = document.querySelector(closeSelector)
+    const modal: HTMLElement | null = document.querySelector(modalSelector);
+    const close: HTMLElement | null = document.querySelector(closeSelector);
     if (!modal || !close) {
       return
     }
@@ -70,6 +70,7 @@ export const modals = () => {
     const closeAllModals = () => {
       windows.forEach(window => {
         window.style.display = 'none';
+        window.classList.add('animated', 'fadeIn');
       });
     }
   };
@@ -92,6 +93,19 @@ export const modals = () => {
         document.body.style.marginRight = `${scroll}px`;
       }
     }, time);
+  };
+
+  const openByScroll = (selector: string) => {
+    window.addEventListener('scroll', () => {
+      const scrollHeight: number = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+
+      if (!btnPressed && (window.pageYOffset + document.documentElement.clientHeight >= scrollHeight)) {
+        const selectorClick: HTMLElement | null = document.querySelector(selector);
+        if (selectorClick) {
+          selectorClick.click();
+        }
+      }
+    });
   };
 
   const calcScroll = (): number => {
@@ -126,5 +140,6 @@ export const modals = () => {
     closeSelector: '.popup-gift .popup-close',
     destroyTrigger: true
   });
+  openByScroll('.fixed-gift');
   showModalByTime('.popup-consultation', 60000);
 };
