@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
   sliders({
     slides: '.main-slider-item',
     slidesDirection: 'vertical',
-    prevBtn: '',
-    nextBtn: '',
+    prevBtn: '.main-prev-btn',
+    nextBtn: '.main-next-btn',
   });
 });
