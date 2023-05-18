@@ -17,7 +17,7 @@ export const forms = () => {
     question: 'https://simple-server-cumz.onrender.com/api/data',
   }
 
-  const postData = async (url: string, data: any) => { // :Promise<string> ??
+  const postData = async (url: string, data: any): Promise<string> => {
     const result = await fetch(url, {
       method: "POST",
       body: data,
@@ -30,27 +30,33 @@ export const forms = () => {
   };
 
   const clearInputs = () => {
-    inputs.forEach((input: any) => {
+    inputs.forEach((input: HTMLInputElement) => {
       input.value = '';
     });
-    uploadPics.forEach((uploadPic: any) => {
-      uploadPic.previousElementSibling!.textContent = 'Файл не выбран';
+    uploadPics.forEach((uploadPic: HTMLInputElement) => {
+      if (!uploadPic.previousElementSibling) {
+        return;
+      }
+      uploadPic.previousElementSibling.textContent = 'Файл не выбран';
     });
   };
 
-  uploadPics.forEach(uploadPic => {
+  uploadPics.forEach((uploadPic: HTMLInputElement) => {
     uploadPic.addEventListener('input', () => {
         let dots: string;
         const divideNameOfFile = uploadPic.files![0].name.split('.');
 
         divideNameOfFile[0].length > 6 ? dots = "..." : dots = '.';
         const name: string = divideNameOfFile[0].substring(0, 6) + dots + divideNameOfFile[1];
-        uploadPic.previousElementSibling!.textContent = name;
+        if (!uploadPic.previousElementSibling) {
+          return;
+        }
+        uploadPic.previousElementSibling.textContent = name;
     });
 });
 
-  forms.forEach(form => {
-    form.addEventListener('submit', (event: any) => {
+  forms.forEach((form: HTMLFormElement) => {
+    form.addEventListener('submit', (event: SubmitEvent) => {
       event.preventDefault();
 
       const statusMessage: HTMLElement | null = document.createElement('div');
@@ -58,7 +64,7 @@ export const forms = () => {
         return;
       }
       statusMessage.classList.add('status');
-      form.parentNode!.append(statusMessage);
+      form.parentNode?.append(statusMessage);
 
       // для исчезновения формы
       form.classList.add('animated', 'fadeOutUp');
@@ -82,8 +88,7 @@ export const forms = () => {
       formData.forEach((value, key) => jsonObject[key] = value);
       const jsonData = JSON.stringify(jsonObject);
 
-      let api: string;
-      form.closest('.popup-design') || form.classList.contains('calc_form') ? api = path.designer : api = path.question;
+      const api: string = form.closest('.popup-design') || form.classList.contains('calc_form') ? path.designer : path.question;
 
       postData(api, jsonData)
             .then(() => {
