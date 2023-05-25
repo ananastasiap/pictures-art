@@ -9,7 +9,7 @@ export const checkTextInputs = (selector: string) => {
     })
 
     textInput.addEventListener('input', function() {
-      const sanitizedValue = this.value.replace(/[a-z]/ig, '');
+      const sanitizedValue: string = this.value.replace(/[a-z]/ig, '');
       if (sanitizedValue !== this.value) {
         this.value = sanitizedValue;
       }
