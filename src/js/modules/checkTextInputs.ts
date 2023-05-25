@@ -7,5 +7,12 @@ export const checkTextInputs = (selector: string) => {
         event.preventDefault();
       }
     })
-  })
+
+    textInput.addEventListener('input', function() {
+      const sanitizedValue = this.value.replace(/[a-z]/ig, '');
+      if (sanitizedValue !== this.value) {
+        this.value = sanitizedValue;
+      }
+    });
+  });
 };
