@@ -28,7 +28,7 @@ export const sliders = ({
       slidesItem.style.display = 'none';
     });
 
-    slidesItems[slideIndex - 1].style.display = 'block'
+    slidesItems[slideIndex - 1].style.display = 'block';
   };
 
   showSlides(slideIndex);
@@ -37,34 +37,33 @@ export const sliders = ({
     showSlides(slideIndex += number);
   };
 
-  try {
-    const prevButton: HTMLElement | null = document.querySelector(prevBtn);
-    const nextButton: HTMLElement | null = document.querySelector(nextBtn);
-    if (!prevBtn || !nextBtn) {
-      return;
-    }
+  const prevButton: HTMLElement | null = document.querySelector(prevBtn);
+  const nextButton: HTMLElement | null = document.querySelector(nextBtn);
+  if (!prevBtn || !nextBtn) {
+    return;
+  }
 
-    prevButton?.addEventListener('click', () => {
-      changeSlides(-1);
-      slidesItems[slideIndex - 1].classList.remove('slideInLeft');
-      slidesItems[slideIndex - 1].classList.add('slideInRight');
+  prevButton?.addEventListener('click', () => {
+    changeSlides(-1);
+    slidesItems[slideIndex - 1].classList.remove('slideInLeft');
+    slidesItems[slideIndex - 1].classList.add('slideInRight');
     });
 
-    nextButton?.addEventListener('click', () => {
-      changeSlides(1);
-      slidesItems[slideIndex - 1].classList.remove('slideInRight');
-      slidesItems[slideIndex - 1].classList.add('slideInLeft');
-    });
-  } catch(event) {}
+  nextButton?.addEventListener('click', () => {
+    changeSlides(1);
+    slidesItems[slideIndex - 1].classList.remove('slideInRight');
+    slidesItems[slideIndex - 1].classList.add('slideInLeft');
+  });
+
 
   const activateAnimation = () => {
     if (slidesDirection === 'vertical') {
-      paused = setInterval(function() {
+      paused = setInterval(() => {
         changeSlides(1);
         slidesItems[slideIndex - 1].classList.add('slideInDown');
       }, 3000);
     } else {
-      paused = setInterval(function() {
+      paused = setInterval(() => {
         changeSlides(1);
         slidesItems[slideIndex - 1].classList.remove('slideInRight');
         slidesItems[slideIndex - 1].classList.add('slideInLeft');

@@ -1,7 +1,8 @@
-import { modals, sliders } from './modules/index.ts';
+import { modals, sliders, forms } from './modules/index.ts';
 
 window.addEventListener('DOMContentLoaded', () => {
   modals();
+  forms();
   sliders({
     slides: '.feedback-slider-item',
     slidesDirection: 'horizontal',
@@ -11,7 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
   sliders({
     slides: '.main-slider-item',
     slidesDirection: 'vertical',
-    prevBtn: '',
-    nextBtn: '',
+    prevBtn: '.main-prev-btn',
+    nextBtn: '.main-next-btn',
   });
 });
