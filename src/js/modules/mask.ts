@@ -1,5 +1,7 @@
 export const mask = (selector: string) => {
 
+  const inputs = document.querySelectorAll<HTMLInputElement>(selector);
+
   const setCursorPosition = (position: number, element: any) => {
     element.focus();
 
@@ -40,9 +42,16 @@ export const mask = (selector: string) => {
     } else {
       setCursorPosition(this.value.length, this);
     }
-  };
 
-  const inputs = document.querySelectorAll<HTMLInputElement>(selector);
+    inputs.forEach((input: HTMLInputElement) => {
+      input.addEventListener('keydown', (event: KeyboardEvent) => {
+        const target = event.target as HTMLInputElement; // через target: HTMLInputElement | null появляется ошибка, не могу понять, как лучше переписать
+        if (target.selectionStart !== null && target.selectionStart < 2 && event.key !== 'Backspace' && event.key !== 'Delete') {
+          event.preventDefault();
+        }
+      });
+    });
+  };
 
   inputs.forEach((input: HTMLInputElement) => {
     input.addEventListener('input', createMask);
