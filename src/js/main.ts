@@ -1,8 +1,11 @@
-import { modals, sliders, forms } from './modules/index.ts';
+import { modals, sliders, forms, mask, checkTextInputs } from './modules/index.ts';
 
 window.addEventListener('DOMContentLoaded', () => {
   modals();
   forms();
+  mask('[name="phone"]');
+  checkTextInputs('[name="name"]');
+  checkTextInputs('[name="message"]');
   sliders({
     slides: '.feedback-slider-item',
     slidesDirection: 'horizontal',

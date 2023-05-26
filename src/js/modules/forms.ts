@@ -7,9 +7,9 @@ export const forms = () => {
     loading: 'Загрузка...',
     success: 'Спасибо! Скоро мы с вами свяжемся',
     failure: 'Что-то пошло не так...',
-    spinner: '../../assets/img/spinner.gif',
-    ok: '../../assets/img/ok.png',
-    fail: '../../assets/img/fail.png',
+    spinner: '/spinner.gif',
+    ok: '/ok.png',
+    fail: '/fail.png',
   };
 
   const path = {
@@ -46,7 +46,7 @@ export const forms = () => {
         let dots: string;
         const divideNameOfFile = uploadPic.files![0].name.split('.');
 
-        divideNameOfFile[0].length > 6 ? dots = "..." : dots = '.';
+        divideNameOfFile[0].length > 6 ? dots = '...' : dots = '.';
         const name: string = divideNameOfFile[0].substring(0, 6) + dots + divideNameOfFile[1];
         if (!uploadPic.previousElementSibling) {
           return;
