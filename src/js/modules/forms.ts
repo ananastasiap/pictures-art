@@ -1,3 +1,5 @@
+import { postData } from "../services/requests";
+
 export const forms = () => {
   const forms = document.querySelectorAll<HTMLFormElement>('form');
   const inputs = document.querySelectorAll<HTMLInputElement>('input');
@@ -16,18 +18,6 @@ export const forms = () => {
     designer: 'https://simple-server-cumz.onrender.com/api/data',
     question: 'https://simple-server-cumz.onrender.com/api/data',
   }
-
-  const postData = async (url: string, data: any): Promise<string> => {
-    const result = await fetch(url, {
-      method: "POST",
-      body: data,
-      headers: {
-        'Content-type': 'application/json',
-      },
-    });
-
-    return await result.text();
-  };
 
   const clearInputs = () => {
     inputs.forEach((input: HTMLInputElement) => {
