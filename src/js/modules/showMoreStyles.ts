@@ -8,7 +8,7 @@ export const showMoreStyles = (trigger: string, wrapper: string) => {
   }
 
   button.addEventListener('click', function() {
-    getResource('public/db.json')
+    getResource('./db.json')
       .then(result => createcards(result.styles))
       .catch(error => console.log(error));
 

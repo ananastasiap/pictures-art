@@ -1,4 +1,4 @@
-import { modals, sliders, forms, mask, checkTextInputs, showMoreStyles } from './modules/index.ts';
+import { modals, sliders, forms, mask, checkTextInputs, showMoreStyles, calc } from './modules/index.ts';
 
 window.addEventListener('DOMContentLoaded', () => {
   modals();
@@ -18,5 +18,12 @@ window.addEventListener('DOMContentLoaded', () => {
     slidesDirection: 'vertical',
     prevBtn: '.main-prev-btn',
     nextBtn: '.main-next-btn',
+  });
+  calc({
+    size: '#size',
+    material: '#material',
+    options: '#options',
+    promocode: '.promocode',
+    result: '.calc-price',
   });
 });
