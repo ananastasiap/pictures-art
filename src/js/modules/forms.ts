@@ -76,6 +76,41 @@ export const forms = () => {
       const formData = new FormData(form);
       const jsonObject: { [key: string]: string | File } = {};
       formData.forEach((value, key) => jsonObject[key] = value);
+
+      if (form.classList.contains('calc_form')) {
+        const size: HTMLSelectElement | null = document.querySelector("#size");
+        const material: HTMLSelectElement | null = document.querySelector('#material');
+        const options: HTMLSelectElement | null = document.querySelector('#options');
+        const promocode: HTMLInputElement | null = document.querySelector('.promocode');
+        const totalPrice: HTMLElement | null = document.querySelector('.calc-price');
+
+        if (size?.value) {
+          jsonObject['size'] = size.options[size.selectedIndex].text;
+        } else {
+          jsonObject['size'] = '';
+        }
+
+        if (material?.value) {
+          jsonObject['material'] = material.options[material.selectedIndex].text;
+        } else {
+          jsonObject['material'] = '';
+        }
+
+        if (options?.value) {
+          jsonObject['options'] = options.options[options.selectedIndex].text;
+        } else {
+          jsonObject['options'] = '';
+        }
+
+        jsonObject['promocode'] = promocode?.value || '';
+
+        if (size?.value && material?.value) {
+          jsonObject['total_price'] = totalPrice?.textContent || '';
+        } else {
+          jsonObject['total_price'] = '';
+        }
+      }
+
       const jsonData = JSON.stringify(jsonObject);
 
       const api: string = form.closest('.popup-design') || form.classList.contains('calc_form') ? path.designer : path.question;
