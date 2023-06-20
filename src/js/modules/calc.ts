@@ -28,7 +28,7 @@ export const calc = ({
 
     if (sizeBlock.value == '' || materialBlock.value == '') {
       resultBlock.textContent = 'Пожалуйста, выберите размер и материал картины';
-    } else if (promocodeBlock.value === 'IWANTPOPART') {
+    } else if (promocodeBlock.value.toUpperCase() === 'IWANTPOPART') {
       resultBlock.textContent = Math.round(finalSum * 0.7).toString();
     } else {
       resultBlock.textContent = finalSum.toString();
