@@ -1,8 +1,9 @@
-import { modals, sliders, forms, mask, checkTextInputs, showMoreStyles, calc } from './modules/index.ts';
+import { modals, sliders, forms, mask, checkTextInputs, showMoreStyles, calc, filter } from './modules/index.ts';
 
 window.addEventListener('DOMContentLoaded', () => {
   modals();
   forms();
+  filter();
   mask('[name="phone"]');
   checkTextInputs('[name="name"]');
   checkTextInputs('[name="message"]');
