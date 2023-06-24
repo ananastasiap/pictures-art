@@ -5,7 +5,7 @@ export const changePicturesInSizeBlocks = (imgSelector: string) => {
     const img: HTMLImageElement | null = block.querySelector('img');
     if (img) {
       img.src = img.src.slice(0, -4) + '-1.png';
-      block.querySelectorAll('p:not(.size-hit)').forEach((p: Element) => {
+      block.querySelectorAll('p:not(.sizes-hit)').forEach((p: Element) => {
         (p as HTMLElement).style.display = 'none';
       });
     }
@@ -15,7 +15,7 @@ export const changePicturesInSizeBlocks = (imgSelector: string) => {
     const img: HTMLImageElement | null = block.querySelector('img');
     if (img) {
       img.src = img.src.slice(0, -6) + '.png';
-      block.querySelectorAll('p:not(.size-hit)').forEach((p: Element) => {
+      block.querySelectorAll('p:not(.sizes-hit)').forEach((p: Element) => {
         (p as HTMLElement).style.display = 'block';
       });
     }
