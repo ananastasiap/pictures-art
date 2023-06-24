@@ -1,4 +1,4 @@
-import { modals, sliders, forms, mask, checkTextInputs, showMoreStyles, calc, filter } from './modules/index.ts';
+import { modals, sliders, forms, mask, checkTextInputs, showMoreStyles, calc, filter, changePicturesInSizeBlocks } from './modules/index.ts';
 
 window.addEventListener('DOMContentLoaded', () => {
   modals();
@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
   checkTextInputs('[name="name"]');
   checkTextInputs('[name="message"]');
   showMoreStyles('.button-styles', '#styles .row');
+  changePicturesInSizeBlocks('.sizes-block');
   sliders({
     slides: '.feedback-slider-item',
     slidesDirection: 'horizontal',
