@@ -29,7 +29,7 @@ export const filter = () => {
     }
   };
 
-  portfolioMenu?.addEventListener('click', (event: Event) => {
+  portfolioMenu.addEventListener('click', (event: Event) => {
     const target = event.target;
 
     if (target instanceof HTMLElement && target.tagName.toUpperCase() === 'LI') {
@@ -39,7 +39,7 @@ export const filter = () => {
 
       target.classList.add('active');
 
-      typeFilter(wrapper?.querySelectorAll(`.${target.classList[0]}`));
+      typeFilter(wrapper.querySelectorAll(`.${target.classList[0]}`));
     }
   });
 };
