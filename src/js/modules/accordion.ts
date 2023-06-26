@@ -14,6 +14,16 @@ export const accordion = (triggerSelector: string) => {
       } else if (this.nextElementSibling) {
         (this.nextElementSibling as HTMLElement).style.maxHeight = '0px';
       }
+
+      buttons.forEach(otherButton => {
+        if (otherButton !== this && otherButton.classList.contains('active-style')) {
+          otherButton.classList.remove('active-style');
+          if (otherButton.nextElementSibling) {
+            otherButton.nextElementSibling.classList.remove('active-content');
+            (otherButton.nextElementSibling as HTMLElement).style.maxHeight = '0px';
+          }
+        }
+      });
     });
   });
 };
