@@ -1,10 +1,11 @@
-import { modals, sliders, forms, mask, checkTextInputs, showMoreStyles, calc, filter, changePicturesInSizeBlocks } from './modules/index.ts';
+import { modals, sliders, forms, mask, checkTextInputs, showMoreStyles, calc, filter, changePicturesInSizeBlocks, accordion } from './modules/index.ts';
 
 window.addEventListener('DOMContentLoaded', () => {
   modals();
   forms();
   filter();
   mask('[name="phone"]');
+  accordion('.accordion-heading');
   checkTextInputs('[name="name"]');
   checkTextInputs('[name="message"]');
   showMoreStyles('.button-styles', '#styles .row');
