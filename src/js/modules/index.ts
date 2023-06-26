@@ -7,3 +7,4 @@ export {checkTextInputs } from './checkTextInputs.ts';
 export { showMoreStyles } from './showMoreStyles.ts';
 export { filter } from './filter.ts';
 export { changePicturesInSizeBlocks } from './changePicturesInSizeBlocks.ts';
+export { accordion } from './accordion.ts';
