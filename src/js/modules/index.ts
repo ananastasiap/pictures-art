@@ -8,3 +8,4 @@ export { showMoreStyles } from './showMoreStyles.ts';
 export { filter } from './filter.ts';
 export { changePicturesInSizeBlocks } from './changePicturesInSizeBlocks.ts';
 export { accordion } from './accordion.ts';
+export { burger } from './burger.ts';

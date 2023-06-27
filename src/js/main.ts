@@ -1,4 +1,4 @@
-import { modals, sliders, forms, mask, checkTextInputs, showMoreStyles, calc, filter, changePicturesInSizeBlocks, accordion } from './modules/index.ts';
+import { modals, sliders, forms, mask, checkTextInputs, showMoreStyles, calc, filter, changePicturesInSizeBlocks, accordion, burger } from './modules/index.ts';
 
 window.addEventListener('DOMContentLoaded', () => {
   modals();
@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
   accordion('.accordion-heading');
   checkTextInputs('[name="name"]');
   checkTextInputs('[name="message"]');
+  burger('.burger', '.burger-menu');
   showMoreStyles('.button-styles', '#styles .row');
   changePicturesInSizeBlocks('.sizes-block');
   sliders({
