@@ -24,7 +24,13 @@ export const scrolling = (upSelector: string) => {
 
       let widthTop: number = document.documentElement.scrollTop;
       let hash: string = (this as HTMLAnchorElement).hash;
-      let toBlock: number = document.querySelector(hash)!.getBoundingClientRect().top;
+      let targetElement = document.querySelector(hash);
+
+      if (!targetElement) {
+        return;
+      }
+
+      let toBlock: number = targetElement.getBoundingClientRect().top;
       let start: number | null = null;
 
       const step = (time: number) => {
