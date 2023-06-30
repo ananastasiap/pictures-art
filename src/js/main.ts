@@ -1,9 +1,22 @@
-import { modals, sliders, forms, mask, checkTextInputs, showMoreStyles, calc, filter, changePicturesInSizeBlocks, accordion, burger, scrolling } from './modules/index.ts';
+import { modals,
+         sliders,
+         forms,
+         mask,
+         checkTextInputs,
+         showMoreStyles,
+         calc,
+         filter,
+         changePicturesInSizeBlocks,
+         accordion,
+         burger,
+         scrolling,
+         dragDrop } from './modules/index.ts';
 
 window.addEventListener('DOMContentLoaded', () => {
   modals();
   forms();
   filter();
+  dragDrop();
   mask('[name="phone"]');
   scrolling('.pageup');
   accordion('.accordion-heading');
