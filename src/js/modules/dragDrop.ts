@@ -32,6 +32,8 @@ export const dragDrop = () => {
 
         if (inputBlock.closest('.calc_form')) {
           fileUpload.style.backgroundColor = '#fff';
+        } else if (inputBlock.closest('.col-md-offset-3')) {
+          fileUpload.style.backgroundColor = '#f7e7e6';
         } else {
           fileUpload.style.backgroundColor = '#ededed';
         }
