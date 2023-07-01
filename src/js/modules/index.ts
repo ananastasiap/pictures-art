@@ -10,3 +10,4 @@ export { changePicturesInSizeBlocks } from './changePicturesInSizeBlocks.ts';
 export { accordion } from './accordion.ts';
 export { burger } from './burger.ts';
 export { scrolling } from './scrolling.ts';
+export { dragDrop } from './dragDrop.ts';
