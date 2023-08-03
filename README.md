@@ -1,34 +1,20 @@
-# Проект с картинами
+# Картины.art
 
-## Please install the following packages:
+### В рамках технического задания необходимо было реализовать:
 
-```bash
-npm install -g yarn
-```
+1. Модальные окна.
+2. Плавный скролл.
+3. Слайдеры:
+    1. автоматическое переключение (остановка при наведении);
+    2. ручное переключение.
+4. Формы отправки данных с валидацией и маской для номера.
+5. Подгрузка элементов с сервера.
+6. Калькулятор расчёта общей суммы.
+7. Фильтрация элементов.
+8. Замена изображений при наведении.
+9. Аккордеон.
+10. Бургер меню.
+11. Drag & Drop загрузки изображений.
 
-## How to install dependencies:
-
-```bash
-yarn
-```
-
-## How to run the project:
-
-```bash
-yarn dev
-```
-
-## How to build the project:
-
-```bash
-yarn build
-```
-
-## How to copy
-
-```bash
-git clone https://github.com/andrey-kudinov/pictures.art.git
-cd windows or open folder in your IDE
-git remote set-url origin your-url
-git push -u origin master
-```
+### Предпросмотр
+![Pictures.art pages preview](./public/pictures-art.png)
